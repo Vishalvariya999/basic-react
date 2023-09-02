@@ -1,35 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Link, NavLink, Routes } from 'react-router-dom';
 
 const Header = () => {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        getData();
-    }, [])
-    const getData = async () => {
-        const data = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-        const res = await data.json()
-        console.log('res', res)
-        setData(res)
-    }
+
     return (
-        <div>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((res, i) =>
-                        <tr key={i}>
-                            <th scope="row">{res.id}</th>
-                            <td>{res.title}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                    <NavLink className="navbar-brand" to="/">Navbar</NavLink>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" to="api-test">Api Test</NavLink>
+                            </li>
+                        </ul>
+                        <form className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </>
     )
 }
 
