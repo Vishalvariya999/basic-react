@@ -7,26 +7,28 @@ const Apitest = () => {
     }, [])
     const getData = async () => {
         const data = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-        const res = await data.json()
-        console.log('res', res)
-        setData(res)
+        const res = await data.json();
+        setData(res);
     }
     return (
-        <div>
-            <table className="table">
-                <thead>
+        <div className='mt-4'>
+            <h2 className='h2 text-center bg-success text-white'>Test Data</h2>
+            <table className="table table-bordered">
+                <thead className='table table-success'>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((res, i) =>
+                    {data.length ? data.map((res, i) =>
                         <tr key={i}>
                             <th scope="row">{res.id}</th>
                             <td>{res.title}</td>
                         </tr>
-                    )}
+                    ) : <tr>
+                        <td className='text-center fw-bold' colSpan={2}>No recored found</td>
+                    </tr>}
                 </tbody>
             </table>
         </div>

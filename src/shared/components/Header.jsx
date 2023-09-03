@@ -2,7 +2,20 @@ import React from 'react'
 import { Link, NavLink, Routes } from 'react-router-dom';
 
 const Header = () => {
-
+    const routerData = [
+        {
+            path: 'api-test',
+            lable: 'Api Test'
+        },
+        {
+            path: 'axios-test',
+            lable: 'Axios'
+        },
+        {
+            path: 'crud',
+            lable: 'Crud'
+        },
+    ];
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-light">
@@ -13,13 +26,19 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="api-test">Api Test</NavLink>
-                            </li>
+                            {routerData.map((res, i) => (
+                                <li className="nav-item" key={i}>
+                                    <NavLink className="nav-link text-dark" aria-current="page" to={res?.path}>
+                                        {res?.lable}
+                                    </NavLink>
+                                </li>
+                            ))}
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <button className="btn btn-outline-success" type="submit">
+                                Search
+                            </button>
                         </form>
                     </div>
                 </div>
