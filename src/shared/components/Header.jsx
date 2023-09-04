@@ -4,6 +4,10 @@ import { Link, NavLink, Routes } from 'react-router-dom';
 const Header = () => {
     const routerData = [
         {
+            path: 'props-test',
+            lable: 'Props'
+        },
+        {
             path: 'api-test',
             lable: 'Api Test'
         },
@@ -12,8 +16,8 @@ const Header = () => {
             lable: 'Axios'
         },
         {
-            path: 'crud',
-            lable: 'Crud'
+            path: 'forms-test',
+            lable: 'Forms'
         },
     ];
     return (
