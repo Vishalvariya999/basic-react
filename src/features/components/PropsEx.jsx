@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PropsEx = ({ userData }) => {
-    console.log('userData', userData);
     return (
         <div className="d-flex flex-wrap mx-5">
             {
