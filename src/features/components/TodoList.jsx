@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react';
+import { faPencil, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 const TodoList = () => {
     const getData = () => {
@@ -18,7 +21,7 @@ const TodoList = () => {
 
     const addItem = () => {
         if (!todoValue) {
-            console.log('Please fill text');
+            toast.error('Please fill text.');
         }
         else if (todoValue && toogleBtn) {
             setTodoItem(
@@ -35,6 +38,7 @@ const TodoList = () => {
             setTodoValue("");
             setEditItem(null);
             setToogleBtn(false);
+            toast.success('Updated successfully.');
         }
         else {
             const todoModiData = {
@@ -43,6 +47,7 @@ const TodoList = () => {
             }
             setTodoItem([...todoItems, todoModiData]);
             setTodoValue("")
+            toast.success('Insert successfully.');
         }
     }
 
@@ -51,6 +56,7 @@ const TodoList = () => {
             return d.id !== id;
         })
         setTodoItem(updatedTodoList);
+        toast.success('Delete successfully.');
     }
 
     const removeAll = () => {
@@ -82,7 +88,7 @@ const TodoList = () => {
                         </div>
                         <div className="col-lg-2">
                             {
-                                toogleBtn ? <button className='btn btn-warning' onClick={addItem}>Update</button> : <button className='btn btn-primary' onClick={addItem}>Add</button>
+                                toogleBtn ? <button className='btn btn-warning' onClick={addItem}><FontAwesomeIcon icon={faPencil} /></button> : <button className='btn btn-primary' onClick={addItem}><FontAwesomeIcon icon={faPlus} /></button>
                             }
                         </div>
                     </div>
@@ -91,7 +97,7 @@ const TodoList = () => {
                     <h2 className="h2 text-center">List</h2><hr />
                     {
                         todoItems.length ?
-                            <button className='btn btn-secondary mb-2' onClick={removeAll}>Remove All</button> : ''
+                            <button className='btn btn-secondary mb-2' onClick={removeAll}><FontAwesomeIcon icon={faTrash} /></button> : ''
                     }
                     <ul className="list-group">
                         {
@@ -99,11 +105,11 @@ const TodoList = () => {
                                 return (
                                     <div className="row" key={data?.id}>
                                         <div className="col-lg-8">
-                                            <li className="list-group-item list-group-item-success mb-2">{data?.name}</li>
+                                            <li className="list-group-item list-group-item-success rounded mb-2">{data?.name}</li>
                                         </div>
                                         <div className="col-lg-4">
-                                            <button className='btn btn-primary mx-1' onClick={() => editItem(data?.id)}>Edit</button>
-                                            <button className='btn btn-danger' onClick={() => deleteItem(data?.id)}>Delete</button>
+                                            <button className='btn btn-primary mx-1' onClick={() => editItem(data?.id)}> <FontAwesomeIcon icon={faPencil} /></button>
+                                            <button className='btn btn-danger' onClick={() => deleteItem(data?.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                         </div>
                                     </div>
                                 )

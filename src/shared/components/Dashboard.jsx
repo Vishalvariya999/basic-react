@@ -10,6 +10,7 @@ import UseStateEx from '../../features/components/UseStateEx'
 import UseEffectEx from '../../features/components/UseEffectEx'
 import UseRedu from '../../features/components/UseRedu'
 import TodoList from '../../features/components/TodoList'
+import Weather from '../../features/components/Weather'
 
 const Dashboard = () => {
     return (
@@ -25,6 +26,7 @@ const Dashboard = () => {
                 <Route path='/useEffect-test' element={<UseEffectEx />} />
                 <Route path='/reducer-test' element={<UseRedu />} />
                 <Route path='/todolist-test' element={<TodoList />} />
+                <Route path='/weather-test' element={<Weather />} />
             </Routes>
         </>
     )

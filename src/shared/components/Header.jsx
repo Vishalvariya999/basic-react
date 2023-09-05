@@ -28,6 +28,10 @@ const Header = () => {
             lable: 'Todo List'
         },
         {
+            path: 'weather-test',
+            lable: 'Weather'
+        },
+        {
             path: 'api-test',
             lable: 'Api Test'
         },
