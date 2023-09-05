@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Routes } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     const routerData = [

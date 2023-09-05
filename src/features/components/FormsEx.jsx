@@ -26,6 +26,7 @@ const FormsEx = () => {
     }
 
     const onSubmit = (e) => {
+
         e.preventDefault();
         const newRecored = { ...userReg, time: new Date() }
         console.log('newRecored', newRecored)
@@ -59,10 +60,12 @@ const FormsEx = () => {
                         <div className="col-lg-6">
                             <label className='form-label'>First name</label>
                             <input type="text" className='form-control' value={userReg.first_name} name='first_name' onChange={inputHandle} placeholder='Enter surname' />
+                            <small className='text-danger'>Please enter first name</small>
                         </div>
                         <div className="col-lg-6">
                             <label className='form-label'>Last name</label>
                             <input type="text" className='form-control' name='last_name' value={userReg.last_name} onChange={inputHandle} placeholder='Enter name' />
+                            <small className='text-danger'>Please enter last name</small>
                         </div>
                         <div className="col-lg-12">
                             <label className='form-label'>Gender</label>
@@ -71,18 +74,22 @@ const FormsEx = () => {
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
+                            <small className='text-danger'>Select gender</small>
                         </div>
                         <div className="col-lg-6">
                             <label className='form-label'>Email address</label>
                             <input type="text" className='form-control' name='email' value={userReg.email} onChange={inputHandle} placeholder='Enter email address' />
+                            <small className='text-danger'>Please enter email address</small>
                         </div>
                         <div className="col-lg-6">
                             <label className='form-label'>Mobile</label>
                             <input type="number" className='form-control' onChange={inputHandle} value={userReg.mobile} name='mobile' placeholder='Enter mobile number' />
+                            <small className='text-danger'>Please enter mobile number</small>
                         </div>
                         <div className="col-lg-12">
                             <label className="form-label">Address</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" value={userReg.address} onChange={inputHandle} name='address' rows="3" placeholder='Enter address'></textarea>
+                            <small className='text-danger'>Please enter address</small>
                         </div>
                         <div className="col-lg-12">
                             <button type='submit' className="btn btn-primary">Submit</button>
