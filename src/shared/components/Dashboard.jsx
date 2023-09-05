@@ -9,6 +9,7 @@ import FoodList from '../../features/components/FoodList'
 import UseStateEx from '../../features/components/UseStateEx'
 import UseEffectEx from '../../features/components/UseEffectEx'
 import UseRedu from '../../features/components/UseRedu'
+import TodoList from '../../features/components/TodoList'
 
 const Dashboard = () => {
     return (
@@ -23,6 +24,7 @@ const Dashboard = () => {
                 <Route path='/usestate-test' element={<UseStateEx />} />
                 <Route path='/useEffect-test' element={<UseEffectEx />} />
                 <Route path='/reducer-test' element={<UseRedu />} />
+                <Route path='/todolist-test' element={<TodoList />} />
             </Routes>
         </>
     )
