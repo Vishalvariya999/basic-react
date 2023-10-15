@@ -18,6 +18,7 @@ const TodoList = () => {
     const [todoItems, setTodoItem] = useState(getData());
     const [editTodoItem, setEditItem] = useState("");
     const [toogleBtn, setToogleBtn] = useState(false);
+    const [deleteId, setdeleteId] = useState('');
 
     const addItem = () => {
         if (!todoValue) {
@@ -84,11 +85,11 @@ const TodoList = () => {
                     <h2 className='h2 text-center'>Add Lisr here!</h2><hr />
                     <div className='row g-3'>
                         <div className="col-lg-10">
-                            <input type="text" placeholder='Enter text' name="todo" value={todoValue} onChange={(e) => setTodoValue(e.target.value)} className='form-control' id="" />
+                            <input type="text" placeholder='Enter text' name="todo" value={todoValue} onChange={(e) => setTodoValue(e.target.value)} className='form-control form-control-lg' />
                         </div>
                         <div className="col-lg-2">
                             {
-                                toogleBtn ? <button className='btn btn-warning' onClick={addItem}><FontAwesomeIcon icon={faPencil} /></button> : <button className='btn btn-primary' onClick={addItem}><FontAwesomeIcon icon={faPlus} /></button>
+                                toogleBtn ? <button className='btn btn-lg btn-warning' onClick={addItem}><FontAwesomeIcon icon={faPencil} /></button> : <button className='btn btn-lg btn-primary' onClick={addItem}><FontAwesomeIcon icon={faPlus} /></button>
                             }
                         </div>
                     </div>
@@ -109,7 +110,7 @@ const TodoList = () => {
                                         </div>
                                         <div className="col-lg-4">
                                             <button className='btn btn-primary mx-1' onClick={() => editItem(data?.id)}> <FontAwesomeIcon icon={faPencil} /></button>
-                                            <button className='btn btn-danger' onClick={() => deleteItem(data?.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                            <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setdeleteId(data?.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                         </div>
                                     </div>
                                 )
@@ -117,6 +118,20 @@ const TodoList = () => {
                                 <h6 className='h6 text-center border p-1 rounded text-danger'>No list found!</h6>
                         }
                     </ul>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={() => deleteItem(deleteId)}>Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
